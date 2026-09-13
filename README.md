@@ -35,6 +35,25 @@ ordo-ai-github/
 └── README.md
 ```
 
+## Product Manager summary
+
+### Objective
+Improve the customer-support experience by making the chatbot answer questions instantly and accurately without noticeable waiting time.
+
+### User value
+- Faster resolution for common questions about derma, CNS, shipping, and returns
+- Reduced friction for first-time users who ask natural-language questions
+- Better support coverage across product categories without requiring a live agent for every query
+
+### What was implemented
+- Added an automatic intent-analysis layer that scores all supported FAQ topics against the user's query
+- Prioritized the best-matching response in real time
+- Removed unnecessary response delay so answers appear immediately after the user submits a question
+- Kept the bot lightweight, fast, and fully browser-based with no external dependency required
+
+### Why this matters
+This makes the chatbot feel responsive and reliable in real customer conversations, which improves trust, lowers abandonment, and supports a stronger self-serve support journey for Ordomed users.
+
 ## Notes
 
 - The chatbot currently uses a rule-based FAQ engine; it does not call an external AI API.

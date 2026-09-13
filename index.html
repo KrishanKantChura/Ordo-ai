@@ -34,10 +34,10 @@
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;}
 body{
-  background:var(--paper);
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(11,46,42,0.05) 1px, transparent 0);
-  background-size:22px 22px;
+  background:
+    radial-gradient(circle at top left, rgba(18,143,166,0.14), transparent 25%),
+    radial-gradient(circle at bottom right, rgba(90,96,208,0.12), transparent 30%),
+    linear-gradient(180deg, #f5f8ff 0%, #f9faf6 100%);
   color:var(--text);
   font-family:'Inter',sans-serif;
   min-height:100vh;
@@ -46,98 +46,108 @@ body{
   align-items:center;
   padding:28px 16px 60px;
 }
-.wrap{width:100%;max-width:1120px;}
+.wrap{width:100%;max-width:1200px;}
 .masthead{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap;}
 .brand{display:flex;align-items:center;gap:12px;}
 .brand-mark{
-  width:44px;height:44px;border-radius:12px;
-  background:linear-gradient(180deg,var(--teal-600),var(--teal-900));
+  width:48px;height:48px;border-radius:16px;
+  background:linear-gradient(135deg,var(--teal-600),var(--teal-900));
   display:flex;align-items:center;justify-content:center;
-  color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:19px;
-  flex-shrink:0;
+  color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:22px;
+  flex-shrink:0;box-shadow:0 18px 40px rgba(12,62,86,0.22);
 }
-.brand-text h1{font-family:'Fraunces',serif;font-weight:600;font-size:24px;margin:0;color:var(--teal-900);letter-spacing:-0.01em;}
+.brand-text h1{font-family:'Fraunces',serif;font-weight:600;font-size:26px;margin:0;color:var(--teal-900);letter-spacing:-0.02em;}
 .brand-text p{margin:2px 0 0;font-size:13px;color:var(--text-soft);}
 .pill{
-  display:inline-flex;align-items:center;gap:6px;
-  background:var(--card);border:1px solid var(--line);
-  padding:7px 13px;border-radius:99px;font-size:12.5px;color:var(--text-soft);
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.75);backdrop-filter:blur(12px);
+  border:1px solid rgba(17,72,101,0.08);box-shadow:0 12px 28px rgba(17,55,72,0.08);
+  padding:8px 14px;border-radius:999px;font-size:12.5px;color:var(--text-soft);
   font-family:'IBM Plex Mono',monospace;
 }
-.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--teal-500);box-shadow:0 0 0 3px var(--teal-100);}
+.pill .dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(180deg,#22d3a9,#0bb39e);box-shadow:0 0 0 4px rgba(34,211,169,0.12);}
 
-.layout{display:grid;grid-template-columns:280px 1fr;gap:20px;align-items:start;}
+.layout{display:grid;grid-template-columns:300px 1fr;gap:22px;align-items:start;}
 @media (max-width:860px){.layout{grid-template-columns:1fr;}}
 
 .sidebar{display:flex;flex-direction:column;gap:14px;position:sticky;top:20px;}
 @media (max-width:860px){.sidebar{position:static;order:2;}}
-.side-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);}
-.side-card h3{font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-faint);margin:0 0 10px;font-weight:600;}
+.side-card{
+  background:rgba(255,255,255,0.78);backdrop-filter:blur(10px);
+  border:1px solid rgba(123,136,153,0.15);border-radius:20px;padding:18px;
+  box-shadow:0 16px 40px rgba(15,23,42,0.06);
+}
+.side-card h3{font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-faint);margin:0 0 12px;font-weight:700;}
 .topic-btn{
   width:100%;display:flex;align-items:center;gap:10px;
-  background:transparent;border:1px solid transparent;border-radius:10px;
-  padding:9px 10px;margin-bottom:4px;text-align:left;cursor:pointer;
-  font-family:inherit;font-size:13.5px;color:var(--text);transition:background .12s,border-color .12s;
+  background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(248,250,252,0.9));
+  border:1px solid transparent;border-radius:12px;padding:11px 12px;margin-bottom:6px;
+  text-align:left;cursor:pointer;font-family:inherit;font-size:13.5px;color:var(--text);
+  transition:transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease;
 }
-.topic-btn:hover{background:var(--teal-50);border-color:var(--teal-100);}
-.topic-swatch{width:9px;height:9px;border-radius:3px;flex-shrink:0;}
+.topic-btn:hover,.topic-btn:focus-visible{background:var(--teal-50);border-color:var(--teal-100);transform:translateY(-1px);}
+.topic-btn.is-active{background:linear-gradient(180deg, rgba(220,241,231,0.95), rgba(255,255,255,1));border-color:var(--teal-100);box-shadow:0 10px 22px rgba(21,138,109,0.08);} 
+.topic-swatch{width:10px;height:10px;border-radius:4px;flex-shrink:0;}
 .sw-derma{background:var(--teal-500);}
 .sw-cns{background:var(--neuro-700);}
 .sw-order{background:#378ADD;}
 .sw-return{background:#D85A30;}
 .sw-safety{background:var(--amber-600);}
 .trust-row{display:flex;flex-direction:column;gap:9px;font-size:12.5px;color:var(--text-soft);}
-.trust-row div{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:8px;}
+.trust-row div{display:flex;justify-content:space-between;border-bottom:1px dashed rgba(123,136,153,0.28);padding-bottom:8px;}
 .trust-row div:last-child{border-bottom:none;padding-bottom:0;}
-.trust-row b{color:var(--ink);font-weight:600;}
-.disclaimer-card{background:var(--amber-100);border:1px solid #EFD9A8;border-radius:var(--radius);padding:14px 16px;font-size:12px;line-height:1.55;color:#5C3E0C;}
+.trust-row b{color:var(--ink);font-weight:700;}
+.disclaimer-card{background:linear-gradient(180deg,#fff7e9,#f8eed5);border:1px solid #edddac;border-radius:20px;padding:14px 16px;font-size:12px;line-height:1.6;color:#5C3E0C;box-shadow:inset 0 1px 0 rgba(255,255,255,0.45);}
 .disclaimer-card b{color:#412402;}
 
-.chat-shell{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;height:640px;overflow:hidden;}
+.chat-shell{
+  background:rgba(255,255,255,0.78);backdrop-filter:blur(12px);
+  border:1px solid rgba(123,136,153,0.16);border-radius:28px;box-shadow:0 26px 60px rgba(15,23,42,0.08);
+  display:flex;flex-direction:column;height:670px;overflow:hidden;
+}
 .chat-head{
-  background:var(--teal-900);color:#fff;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
+  background:linear-gradient(135deg,#062c76 0%,#0d2f8f 35%,#0d1e51 100%);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
 }
 .chat-head-left{display:flex;align-items:center;gap:10px;}
-.chat-head-left .status-dot{width:8px;height:8px;border-radius:50%;background:#4EE3A6;box-shadow:0 0 0 3px rgba(78,227,166,0.25);}
-.chat-head-left span{font-size:13.5px;font-weight:500;}
-.chat-head-left small{display:block;font-size:11px;color:#9FCFC0;font-weight:400;}
+.chat-head-left .status-dot{width:9px;height:9px;border-radius:50%;background:#4EE3A6;box-shadow:0 0 0 4px rgba(78,227,166,0.22);}
+.chat-head-left span{font-size:13.5px;font-weight:600;}
+.chat-head-left small{display:block;font-size:11px;color:#b8d8d4;font-weight:400;}
 .chat-head-actions{position:relative;}
-  .reset-btn{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);color:#fff;font-size:12px;padding:6px 12px;border-radius:99px;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px;}
-.reset-btn:hover{background:rgba(255,255,255,0.18);}
+  .reset-btn{background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.14);color:#fff;font-size:12px;padding:7px 12px;border-radius:999px;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px;transition:all .12s ease;}
+.reset-btn:hover{background:rgba(255,255,255,0.18);transform:translateY(-1px);}
 .reset-btn .caret{font-size:10px;opacity:.8;}
-.chat-menu{position:absolute;top:calc(100% + 8px);right:0;display:none;flex-direction:column;min-width:150px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;z-index:20;}
+.chat-menu{position:absolute;top:calc(100% + 8px);right:0;display:none;flex-direction:column;min-width:170px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 42px rgba(15,23,42,0.12);overflow:hidden;z-index:20;}
 .chat-menu.open{display:flex;}
-.chat-menu button{border:none;background:transparent;padding:10px 12px;text-align:left;font:inherit;font-size:13px;color:var(--text);cursor:pointer;}
+.chat-menu button{border:none;background:transparent;padding:11px 12px;text-align:left;font:inherit;font-size:13px;color:var(--text);cursor:pointer;transition:background .12s ease;}
 .chat-menu button:hover{background:var(--teal-50);}
 .chat-menu button.end-chat{color:var(--danger);}
 
-.messages{flex:1;overflow-y:auto;padding:22px 22px 10px;display:flex;flex-direction:column;gap:16px;}
-.msg-row{display:flex;gap:10px;max-width:88%;}
+.messages{flex:1;overflow-y:auto;padding:22px 22px 10px;display:flex;flex-direction:column;gap:16px;background:linear-gradient(180deg, rgba(249,250,251,0.8), rgba(255,255,255,0));}
+.msg-row{display:flex;gap:10px;max-width:90%;}
 .msg-row.user{align-self:flex-end;flex-direction:row-reverse;}
-.avatar{width:30px;height:30px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:13px;}
-.avatar.bot{background:var(--teal-700);color:#fff;}
-.avatar.user{background:#DDE6E2;color:var(--teal-900);}
+.avatar{width:30px;height:30px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:13px;}
+.avatar.bot{background:linear-gradient(180deg,var(--teal-700),var(--teal-900));color:#fff;box-shadow:0 10px 18px rgba(17,62,109,0.18);}
+.avatar.user{background:linear-gradient(180deg,#dfeaf3,#cfe2ea);color:var(--teal-900);}
 .bubble{
-  position:relative;padding:12px 15px;border-radius:14px;font-size:14.5px;line-height:1.55;
+  position:relative;padding:12px 15px;border-radius:16px;font-size:14.5px;line-height:1.6;box-shadow:0 10px 18px rgba(15,23,42,0.04);
 }
 .bubble p{margin:0 0 8px;}
 .bubble p:last-child{margin-bottom:0;}
 .bubble ul{margin:6px 0 8px;padding-left:18px;}
 .bubble li{margin-bottom:3px;}
-.msg-row.user .bubble{background:var(--teal-700);color:#fff;border-bottom-right-radius:4px;}
+.msg-row.user .bubble{background:linear-gradient(180deg,#0b2f6d,#0a2559);color:#fff;border-bottom-right-radius:6px;}
 .msg-row.bot .bubble{
-  background:#fff;color:var(--text);border:1px solid var(--line);border-bottom-left-radius:4px;
-  background-image:radial-gradient(circle at 10px 0, transparent 5px, #fff 5.5px);
+  background:linear-gradient(180deg,#fff,#f9fbff);color:var(--text);border:1px solid rgba(16,72,117,0.08);border-bottom-left-radius:6px;
+  background-image:radial-gradient(circle at 10px 0, transparent 5px, rgba(255,255,255,0.18) 5.5px);
   background-size:20px 6px;background-repeat:repeat-x;background-position:top left;
   border-top:none;
 }
 .bubble .rx-tag{
   display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.03em;
-  background:var(--danger-bg);color:var(--danger);padding:2px 8px;border-radius:5px;margin-bottom:8px;font-weight:500;
-}
+  background:var(--danger-bg);color:var(--danger);padding:2px 8px;border-radius:5px;margin-bottom:8px;font-weight:600;}
 .bubble .src-tag{
   display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.03em;
-  background:var(--teal-50);color:var(--teal-700);padding:2px 8px;border-radius:5px;margin-top:8px;font-weight:500;
+  background:var(--teal-50);color:var(--teal-700);padding:2px 8px;border-radius:5px;margin-top:8px;font-weight:600;
 }
 .typing{display:flex;gap:4px;padding:6px 2px;}
 .typing span{width:6px;height:6px;border-radius:50%;background:var(--text-faint);animation:blink 1.1s infinite ease-in-out;}
@@ -145,31 +155,32 @@ body{
 .typing span:nth-child(3){animation-delay:.3s;}
 @keyframes blink{0%,80%,100%{opacity:.25;transform:translateY(0);}40%{opacity:1;transform:translateY(-2px);}}
 
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;max-width:100%;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;max-width:100%;padding:0 22px 14px;background:rgba(255,255,255,0.16);}
 .chip{
-  background:var(--teal-50);border:1px solid var(--teal-100);color:var(--teal-700);
-  font-family:inherit;font-size:12.5px;padding:7px 13px;border-radius:99px;cursor:pointer;transition:all .12s;
+  background:linear-gradient(180deg,#f2faf8,#ebf8f6);border:1px solid rgba(20,116,98,0.12);color:var(--teal-700);
+  font-family:inherit;font-size:12.5px;padding:7px 13px;border-radius:999px;cursor:pointer;transition:all .12s ease;box-shadow:0 8px 18px rgba(15,23,42,0.02);
 }
-.chip:hover{background:var(--teal-100);border-color:var(--teal-500);}
-.chip.alt{background:var(--neuro-100);border-color:#D6D2F5;color:var(--neuro-700);}
-.chip.alt:hover{background:#D6D2F5;}
-.chip.contact{background:var(--amber-100);border-color:#EFD9A8;color:#5C3E0C;}
+.chip:hover{background:var(--teal-100);border-color:var(--teal-500);transform:translateY(-1px);}
+.chip.alt{background:linear-gradient(180deg,#f4f2ff,#edebff);border-color:rgba(108,92,231,0.12);color:var(--neuro-700);}
+.chip.alt:hover{background:#e7e3ff;}
+.chip.contact{background:linear-gradient(180deg,#fff5e2,#f8ebd0);border-color:rgba(186,117,23,0.12);color:#5C3E0C;}
 
-.composer{border-top:1px solid var(--line);padding:14px 18px;display:flex;gap:10px;flex-shrink:0;background:var(--teal-50);}
+.composer{border-top:1px solid rgba(123,136,153,0.18);padding:14px 18px;display:flex;gap:10px;flex-shrink:0;background:linear-gradient(180deg,rgba(239,247,247,0.9),rgba(255,255,255,0.95));}
 .composer input{
-  flex:1;border:1px solid var(--line);border-radius:99px;padding:11px 18px;font-size:14px;
-  font-family:inherit;outline:none;background:#fff;color:var(--text);
+  flex:1;border:1px solid rgba(123,136,153,0.18);border-radius:999px;padding:12px 18px;font-size:14px;
+  font-family:inherit;outline:none;background:#fff;color:var(--text);box-shadow:inset 0 1px 2px rgba(15,23,42,0.02);
 }
-.composer input:focus{border-color:var(--teal-500);box-shadow:0 0 0 3px var(--teal-100);}
+.composer input:focus{border-color:var(--teal-500);box-shadow:0 0 0 3px rgba(29,57,158,0.08);}
 .composer button{
-  background:var(--teal-700);color:#fff;border:none;border-radius:99px;width:44px;height:44px;flex-shrink:0;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .12s;
+  background:linear-gradient(180deg,var(--teal-700),var(--teal-900));color:#fff;border:none;border-radius:999px;width:46px;height:46px;flex-shrink:0;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .12s ease, box-shadow .12s ease;
+  box-shadow:0 14px 24px rgba(12,46,90,0.2);
 }
-.composer button:hover{background:var(--teal-900);}
+.composer button:hover{transform:translateY(-1px);box-shadow:0 18px 28px rgba(12,46,90,0.22);}
 .composer button svg{width:18px;height:18px;}
 
 ::-webkit-scrollbar{width:8px;}
-::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px;}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#dfe7ef,#ced9e4);border-radius:999px;}
 </style>
 </head>
 <body>
@@ -183,7 +194,7 @@ body{
         <p>Derma &amp; CNS care assistant</p>
       </div>
     </div>
-    <div class="pill"><span class="dot"></span>Ai Powered Engein</div>
+    <div class="pill"><span class="dot"></span>AI Powered Engine</div>
   </div>
 
   <div class="layout">
@@ -431,7 +442,83 @@ const KB = {
   }
 };
 
+const MULTILINGUAL_INTENTS = {
+  greeting: {
+    en: `<p>Hi, I'm <b>Ordo AI</b> Ordomed's care assistant for Dermatology and CNS (neurology) questions, plus your orders, shipping and returns.</p><p>What would you like help with?</p>`,
+    hinglish: `<p>Namaste, main <b>Ordo AI</b> hoon. Main Ordomed ka Derma aur CNS care assistant hoon, aur delivery, returns aur orders mein help karta hoon.</p><p>Aapko kis cheez mein madad chahiye?</p>`,
+    hi: `<p>नमस्ते, मैं <b>Ordo AI</b> हूँ। मैं Ordomed का Dermal और CNS care assistant हूँ, और orders, shipping और returns में मदद करता हूँ।</p><p>आपको किस बात में सहायता चाहिए?</p>`
+  },
+  derma_menu: {
+    en: `<p>Ordomed's Derma range covers <b>Acne, Aging, Dull Skin, Pigmentation</b> and <b>Sun Damage</b> plus prescription creams for infections like eczema and fungal skin conditions. Pick a topic:</p>`,
+    hinglish: `<p>Ordomed ka Derma range <b>Acne, Aging, Dull Skin, Pigmentation</b> aur <b>Sun Damage</b> ko cover karta hai, plus eczema aur fungal skin infections ke liye prescription creams bhi available hain. Topic choose kariye:</p>`,
+    hi: `<p>Ordomed का Derma range <b>Acne, Aging, Dull Skin, Pigmentation</b> और <b>Sun Damage</b> को cover करता है, साथ ही eczema और fungal skin infections के लिए prescription creams भी हैं। कोई topic चुनें:</p>`
+  },
+  cns_menu: {
+    en: `<p>Ordomed's CNS range focuses on <b>epilepsy and seizure-care medicines</b>, prescribed and monitored by a neurologist. Here's what I can walk you through:</p><p class="rx-note"><span class="rx-tag">PRESCRIPTION ONLY</span></p>`,
+    hinglish: `<p>Ordomed ka CNS range <b>epilepsy aur seizure-care medicines</b> par focus karta hai, jo neurologist ke prescription aur monitoring ke under use hote hain. Main aapko ye samjha sakta hoon:</p><p class="rx-note"><span class="rx-tag">PRESCRIPTION ONLY</span></p>`,
+    hi: `<p>Ordomed का CNS range <b>epilepsy और seizure-care medicines</b> पर focus करता है, जो neurologist के prescription और monitoring के तहत उपयोग होते हैं। मैं आपको ये समझा सकता हूँ:</p><p class="rx-note"><span class="rx-tag">PRESCRIPTION ONLY</span></p>`
+  },
+  order_menu: {
+    en: `<p>Happy to help with ordering. What do you need?</p>`,
+    hinglish: `<p>Order aur delivery ke liye ready hoon. Aapko kya chahiye?</p>`,
+    hi: `<p>Order और delivery में मदद के लिए तैयार हूँ। आपको क्या चाहिए?</p>`
+  },
+  return_menu: {
+    en: `<p>Here's what I can tell you about returns, exchanges and refunds:</p>`,
+    hinglish: `<p>Returns, exchanges aur refunds ke baare mein main aapko ye samjha sakta hoon:</p>`,
+    hi: `<p>Returns, exchanges और refunds के बारे में मैं आपको ये बता सकता हूँ:</p>`
+  },
+  human: {
+    en: `<p>I'm here to help! You can reach Ordomed CustomerCare through the following option:<p>- Live Chat: Instant messaging support, always available<p><p>- Call Back: Share your issue details and Ordomed will call you back<p><p>Or you can reach the Ordomed team directly:</p><ul><li><b>Phone:</b> 76002 51252</li><li><b>Email:</b> customercare@ordomed.in</li></ul><p style="font-size:12.5px;color:var(--text-soft);">Ordomed never asks for payment outside its official website/app, or for "contest" or "lucky draw" payments. Report anything suspicious via the Chakshu portal or the numbers above.</p>`,
+    hinglish: `<p>Main help karne ke liye yahan hoon! Aap Ordomed CustomerCare ko in options se contact kar sakte hain:<p>- Live Chat: Instant messaging support, hamesha available<p><p>- Call Back: Apni problem share kijiye aur Ordomed aapko callback karega<p><p>Ya phir direct team se contact kijiye:</p><ul><li><b>Phone:</b> 76002 51252</li><li><b>Email:</b> customercare@ordomed.in</li></ul><p style="font-size:12.5px;color:var(--text-soft);">Ordomed official website/app ke alawa payment nahi maangta, aur na hi "contest" ya "lucky draw" ke liye. Kuch suspicious ho to Chakshu portal ya upar diye gaye numbers par report kijiye.</p>`,
+    hi: `<p>मैं मदद करने के लिए यहाँ हूँ! आप Ordomed CustomerCare से इन विकल्पों के माध्यम से संपर्क कर सकते हैं:<p>- Live Chat: Instant messaging support, हमेशा उपलब्ध<p><p>- Call Back: अपनी समस्या बताइए और Ordomed आपको callback करेगा<p><p>या सीधे टीम से संपर्क करें:</p><ul><li><b>Phone:</b> 76002 51252</li><li><b>Email:</b> customercare@ordomed.in</li></ul><p style="font-size:12.5px;color:var(--text-soft);">Ordomed official website/app के अलावा payment नहीं मांगता, और न ही "contest" या "lucky draw" के लिए। कुछ suspicious लगे तो Chakshu portal या ऊपर दिए गए numbers पर report करें।</p>`
+  },
+  fallback: {
+    en: `<p>I don't have a confident answer for that one yet  I'm focused on Derma, CNS, orders, shipping and returns for Ordomed. You can rephrase, pick a topic below, or reach our team directly.</p>`,
+    hinglish: `<p>Mujhe is question ka confident answer abhi nahi mila, lekin main Derma, CNS, orders, shipping aur returns par focus karta hoon. Aap question ko phir se likho, topic choose karo, ya direct team se contact karo.</p>`,
+    hi: `<p>मुझे इस सवाल का confident answer अभी नहीं मिला, लेकिन मैं Derma, CNS, orders, shipping और returns पर focus करता हूँ। कृपया सवाल को फिर से लिखें, topic चुनें, या सीधे team से contact करें।</p>`
+  }
+};
+
 // keyword routing for free-text input -> intent id
+const INTENT_KEYWORDS = {
+  greeting: ["hi", "hello", "hey", "start", "menu", "home", "main menu"],
+  derma_menu: ["derma", "skin", "skincare", "cosmetic", "skin care", "face"],
+  cns_menu: ["cns", "neurology", "neuro", "seizure", "epilepsy", "brain"],
+  order_menu: ["order", "purchase", "buy", "checkout", "delivery", "shipping"],
+  return_menu: ["return", "refund", "exchange", "replacement", "cancel"],
+  derma_infection_menu: ["infection cream", "infected skin", "eczema cream", "fungal cream", "prescription cream"],
+  derma_acne_cause: ["acne", "pimple", "breakout", "blackhead", "whitehead", "oily skin", "scar"],
+  derma_acne_products: ["acne product", "benzoyl peroxide", "retinoid", "tretinoin", "acne treatment"],
+  derma_pigmentation: ["pigmentation", "dark spot", "melasma", "dull skin", "brighten", "vitamin c", "niacinamide"],
+  derma_aging: ["anti aging", "aging", "wrinkle", "fine line", "anti-age", "retinoid"],
+  derma_sunscreen: ["sunscreen", "spf", "sun protection", "sun damage", "uv"],
+  derma_routine: ["routine", "regimen", "skincare routine", "skin steps", "skin assessment"],
+  derma_tacrolimus: ["tacrolimus", "eczema", "itchy skin"],
+  derma_mupirocin: ["mupirocin", "impetigo", "bacterial skin", "infected wound"],
+  derma_luliconazole: ["luliconazole", "fungal infection", "ringworm", "antifungal"],
+  derma_infection_rx: ["infection prescription", "infection cream prescription", "need prescription", "prescription cream"],
+  cns_leve: ["levetiracetam", "orbilexa", "seizure medicine"],
+  cns_briva: ["brivaracetam", "brivibit", "partial seizure"],
+  cns_rx_required: ["without prescription", "buy cns without rx", "cns prescription"],
+  cns_dose_change: ["change dose", "adjust dose", "stop medicine", "dose change", "increase dose"],
+  cns_missed_dose: ["missed dose", "forgot dose", "late dose", "skip dose"],
+  order_place: ["place order", "how to order", "buy medicine", "checkout", "add to cart"],
+  order_upload_rx: ["upload prescription", "prescription upload", "rx upload", "submit prescription"],
+  order_payment: ["payment", "upi", "card", "pay", "wallet"],
+  order_delivery_time: ["delivery time", "how long", "when will it arrive", "arrive", "shipping time"],
+  order_cities: ["cities", "city", "deliver to", "pincode", "area", "location"],
+  order_shipping_cost: ["shipping cost", "delivery charge", "shipping charge", "fee"],
+  order_tracking: ["track order", "tracking", "shipment", "status"],
+  order_genuine: ["genuine", "authentic", "trust", "real medicine", "fake", "original"],
+  return_policy: ["return policy", "can i return", "return item"],
+  return_refund_process: ["refund", "money back", "credit", "reimbursement"],
+  return_exceptions: ["non refundable", "cannot return", "return excluded", "exceptions"],
+  return_damaged: ["damaged", "broken", "leak", "defective", "arrived damaged"],
+  human: ["human", "agent", "customercare", "support", "call", "phone", "email", "contact", "pharmacist"],
+  CustomerCare: ["customer care", "help", "contact", "support", "support team"]
+};
+
 const ROUTES = [
   [/acne|pimple|breakout|blackhead|whitehead/i, "derma_acne_cause"],
   [/benzoyl|tretinoin|acne.*product|product.*acne/i, "derma_acne_products"],
@@ -471,12 +558,93 @@ const ROUTES = [
   [/^hi$|^hello$|^hey$|start over|menu/i, "greeting"]
 ];
 
-function routeFreeText(text){
-  const t = text.trim();
-  for (const [pattern, id] of ROUTES){
-    if (pattern.test(t)) return id;
+function normalizeText(value){
+  return String(value || '').toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function detectUserLanguage(text){
+  const value = String(text || '');
+  const hasHindiScript = /[\u0900-\u097F]/.test(value);
+  const hinglishWords = /(namaste|hi|hello|hlo|kaise|kya|aap|mujhe|hai|nahi|please|thanks|thank you|matlab|delivery|order|prescription|support)/i;
+  const spanishWords = /(hola|gracias|ayuda|por favor|necesito|como|donde|precio|pedido|envio)/i;
+
+  if (hasHindiScript || /namaste|hlo|kya|aap|mujhe|hai|nahi|kaise|kya.*hai|main|mene|aur|liya|chahiye/i.test(value)) {
+    return 'hinglish';
   }
-  return "fallback";
+
+  if (spanishWords.test(value)) return 'es';
+  return 'en';
+}
+
+function getLocalizedAnswer(intentId, language){
+  const node = KB[intentId] || KB.fallback;
+  const localized = MULTILINGUAL_INTENTS[intentId];
+
+  if (localized && localized[language]) {
+    return localized[language];
+  }
+
+  if (language === 'hinglish' || language === 'hi') {
+    return `<p>Apko is topic ke liye quick help chahiye. Main aapko relevant guidance dene ki koshish karta hoon.</p><p>${node.answer.replace(/<[^>]+>/g, '')}</p>`;
+  }
+
+  return node.answer;
+}
+
+function scoreIntentMatch(text, intentId){
+  const normalized = normalizeText(text);
+  if (!normalized) return 0;
+
+  let score = 0;
+  const keywords = INTENT_KEYWORDS[intentId] || [];
+
+  for (const keyword of keywords) {
+    const phrase = normalizeText(keyword);
+    if (!phrase) continue;
+
+    const exactMatches = (normalized.match(new RegExp(phrase.replace(/\s+/g, ' '), 'g')) || []).length;
+    if (exactMatches > 0) {
+      score += exactMatches * 5;
+    }
+
+    const words = phrase.split(' ');
+    let partialMatches = 0;
+    for (const word of words) {
+      if (word && normalized.includes(word)) partialMatches += 1;
+    }
+    if (partialMatches > 0) score += partialMatches * 2;
+  }
+
+  for (const [pattern, id] of ROUTES) {
+    if (id === intentId && pattern.test(normalized)) {
+      score += 8;
+      break;
+    }
+  }
+
+  return score;
+}
+
+function analyzeQuestion(text){
+  const normalized = normalizeText(text);
+  if (!normalized) return 'greeting';
+
+  let bestIntent = 'fallback';
+  let bestScore = 0;
+
+  for (const key of Object.keys(KB)) {
+    const currentScore = scoreIntentMatch(normalized, key);
+    if (currentScore > bestScore) {
+      bestScore = currentScore;
+      bestIntent = key;
+    }
+  }
+
+  return bestScore > 0 ? bestIntent : 'fallback';
+}
+
+function routeFreeText(text){
+  return analyzeQuestion(text);
 }
 
 // ---------------- CHAT ENGINE ----------------
@@ -535,16 +703,20 @@ function renderChips(pairs){
   });
 }
 
-function goTo(intentId, userLabel){
+function answerIntent(intentId, userLabel, language = 'en'){
   if (userLabel) addUserMessage(userLabel);
   liveChipsEl.innerHTML = '';
-  addBotTyping();
-  setTimeout(() => {
-    removeBotTyping();
-    const node = KB[intentId] || KB.fallback;
-    addBotMessage(node.answer);
-    if (node.chips) renderChips(node.chips);
-  }, 480 + Math.random()*260);
+  removeBotTyping();
+
+  const node = KB[intentId] || KB.fallback;
+  const localizedAnswer = getLocalizedAnswer(intentId, language);
+  addBotMessage(localizedAnswer);
+  if (node.chips) renderChips(node.chips);
+}
+
+function goTo(intentId, userLabel){
+  const language = detectUserLanguage(userLabel || '');
+  answerIntent(intentId, userLabel, language);
 }
 
 function handleUserText(){
@@ -553,14 +725,10 @@ function handleUserText(){
   addUserMessage(text);
   inputEl.value = '';
   liveChipsEl.innerHTML = '';
-  addBotTyping();
+
+  const language = detectUserLanguage(text);
   const intentId = routeFreeText(text);
-  setTimeout(() => {
-    removeBotTyping();
-    const node = KB[intentId] || KB.fallback;
-    addBotMessage(node.answer);
-    if (node.chips) renderChips(node.chips);
-  }, 480 + Math.random()*260);
+  answerIntent(intentId, null, language);
 }
 
 document.getElementById('sendBtn').addEventListener('click', handleUserText);
@@ -568,6 +736,8 @@ inputEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleUserTe
 
 document.querySelectorAll('.topic-btn').forEach(btn => {
   btn.addEventListener('click', () => {
+    document.querySelectorAll('.topic-btn').forEach(item => item.classList.remove('is-active'));
+    btn.classList.add('is-active');
     const id = btn.getAttribute('data-topic');
     const label = btn.textContent.trim();
     goTo(id, label);
