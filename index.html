@@ -9,63 +9,64 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#008c95;
-  --teal-900:#002395;
-  --teal-700:#032364;
-  --teal-600:#158A6D;
-  --teal-500:#1d399e;
-  --teal-100:#DCF1E7;
-  --teal-50:#F3FAF7;
-  --neuro-700:#3C3489;
-  --neuro-100:#E9E7FB;
-  --amber-600:#BA7517;
-  --amber-100:#FAEEDA;
-  --paper:#FBFAF6;
-  --card:#FFFFFF;
-  --line:#E1DED2;
-  --text:#1B241F;
-  --text-soft:#5B6560;
-  --text-faint:#8B948E;
-  --danger:#A32D2D;
-  --danger-bg:#FCEBEB;
-  --radius:14px;
-  --shadow:0 1px 2px rgba(11,46,42,0.06), 0 8px 24px -12px rgba(11,46,42,0.18);
+  --ink:#0d6b73;
+  --teal-900:#0b1f6b;
+  --teal-700:#133c9c;
+  --teal-600:#1e7d7a;
+  --teal-500:#1f5fcd;
+  --teal-100:#d9f2ec;
+  --teal-50:#f0faf8;
+  --neuro-700:#3a2d7d;
+  --neuro-100:#ece8ff;
+  --amber-600:#be7c1b;
+  --amber-100:#fff4dd;
+  --paper:#f6f8fb;
+  --card:#ffffff;
+  --line:#e7ebf2;
+  --text:#172033;
+  --text-soft:#58657c;
+  --text-faint:#7a869d;
+  --danger:#b53f3f;
+  --danger-bg:#fde8e8;
+  --radius:18px;
+  --shadow:0 18px 40px rgba(16,24,40,0.08);
 }
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;}
 body{
   background:
-    radial-gradient(circle at top left, rgba(18,143,166,0.14), transparent 25%),
-    radial-gradient(circle at bottom right, rgba(90,96,208,0.12), transparent 30%),
-    linear-gradient(180deg, #f5f8ff 0%, #f9faf6 100%);
+    radial-gradient(circle at 15% 10%, rgba(61,120,255,0.12), transparent 24%),
+    radial-gradient(circle at 85% 20%, rgba(9,185,140,0.12), transparent 22%),
+    linear-gradient(180deg,#f4f7fb 0%,#f9fafc 100%);
   color:var(--text);
   font-family:'Inter',sans-serif;
   min-height:100vh;
   display:flex;
   flex-direction:column;
   align-items:center;
-  padding:28px 16px 60px;
+  padding:28px 16px 64px;
 }
-.wrap{width:100%;max-width:1200px;}
-.masthead{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap;}
-.brand{display:flex;align-items:center;gap:12px;}
+.wrap{width:100%;max-width:1220px;}
+.masthead{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:22px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:14px;}
 .brand-mark{
   width:48px;height:48px;border-radius:16px;
-  background:linear-gradient(135deg,var(--teal-600),var(--teal-900));
+  background:linear-gradient(135deg,#1ea7a0 0%, #183ca4 100%);
   display:flex;align-items:center;justify-content:center;
-  color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:22px;
-  flex-shrink:0;box-shadow:0 18px 40px rgba(12,62,86,0.22);
+  color:#fff;font-family:'Fraunces',serif;font-weight:700;font-size:20px;
+  flex-shrink:0;box-shadow:0 16px 30px rgba(25,87,124,0.22);
 }
-.brand-text h1{font-family:'Fraunces',serif;font-weight:600;font-size:26px;margin:0;color:var(--teal-900);letter-spacing:-0.02em;}
-.brand-text p{margin:2px 0 0;font-size:13px;color:var(--text-soft);}
-.pill{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,0.75);backdrop-filter:blur(12px);
-  border:1px solid rgba(17,72,101,0.08);box-shadow:0 12px 28px rgba(17,55,72,0.08);
-  padding:8px 14px;border-radius:999px;font-size:12.5px;color:var(--text-soft);
-  font-family:'IBM Plex Mono',monospace;
+.brand-text h1{font-family:'Fraunces',serif;font-weight:700;font-size:28px;margin:0;color:var(--teal-900);letter-spacing:-0.04em;}
+.brand-text p{margin:4px 0 0;font-size:13px;color:var(--text-soft);letter-spacing:0.02em;}
+.masthead-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.meta-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,0.8);border:1px solid rgba(17,72,101,0.07);
+  box-shadow:0 12px 26px rgba(19,42,68,0.06);padding:8px 12px;border-radius:999px;
+  font-size:12px;font-weight:600;color:var(--text-soft);font-family:'IBM Plex Mono',monospace;
 }
-.pill .dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(180deg,#22d3a9,#0bb39e);box-shadow:0 0 0 4px rgba(34,211,169,0.12);}
+.meta-pill::before{content:'';display:block;width:8px;height:8px;border-radius:50%;background:linear-gradient(180deg,#22d3a9,#0bb39e);box-shadow:0 0 0 4px rgba(34,211,169,0.12);}
+.meta-pill-soft{color:var(--teal-700);background:rgba(240,250,248,0.9);}
 
 .layout{display:grid;grid-template-columns:300px 1fr;gap:22px;align-items:start;}
 @media (max-width:860px){.layout{grid-template-columns:1fr;}}
@@ -73,48 +74,48 @@ body{
 .sidebar{display:flex;flex-direction:column;gap:14px;position:sticky;top:20px;}
 @media (max-width:860px){.sidebar{position:static;order:2;}}
 .side-card{
-  background:rgba(255,255,255,0.78);backdrop-filter:blur(10px);
-  border:1px solid rgba(123,136,153,0.15);border-radius:20px;padding:18px;
-  box-shadow:0 16px 40px rgba(15,23,42,0.06);
+  background:rgba(255,255,255,0.82);backdrop-filter:blur(12px);
+  border:1px solid rgba(123,136,153,0.12);border-radius:22px;padding:18px;
+  box-shadow:var(--shadow);
 }
-.side-card h3{font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-faint);margin:0 0 12px;font-weight:700;}
+.side-card h3{font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-faint);margin:0 0 12px;font-weight:800;}
 .topic-btn{
   width:100%;display:flex;align-items:center;gap:10px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(248,250,252,0.9));
+  background:linear-gradient(180deg, rgba(255,255,255,0.68), rgba(248,250,252,0.9));
   border:1px solid transparent;border-radius:12px;padding:11px 12px;margin-bottom:6px;
-  text-align:left;cursor:pointer;font-family:inherit;font-size:13.5px;color:var(--text);
+  text-align:left;cursor:pointer;font-family:inherit;font-size:14px;color:var(--text);
   transition:transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease;
 }
 .topic-btn:hover,.topic-btn:focus-visible{background:var(--teal-50);border-color:var(--teal-100);transform:translateY(-1px);}
-.topic-btn.is-active{background:linear-gradient(180deg, rgba(220,241,231,0.95), rgba(255,255,255,1));border-color:var(--teal-100);box-shadow:0 10px 22px rgba(21,138,109,0.08);} 
+.topic-btn.is-active{background:linear-gradient(180deg, rgba(218,242,236,0.96), rgba(255,255,255,1));border-color:rgba(21,123,99,0.14);box-shadow:0 12px 24px rgba(15,93,79,0.08);} 
 .topic-swatch{width:10px;height:10px;border-radius:4px;flex-shrink:0;}
 .sw-derma{background:var(--teal-500);}
 .sw-cns{background:var(--neuro-700);}
-.sw-order{background:#378ADD;}
-.sw-return{background:#D85A30;}
+.sw-order{background:#3880d7;}
+.sw-return{background:#d26a45;}
 .sw-safety{background:var(--amber-600);}
-.trust-row{display:flex;flex-direction:column;gap:9px;font-size:12.5px;color:var(--text-soft);}
-.trust-row div{display:flex;justify-content:space-between;border-bottom:1px dashed rgba(123,136,153,0.28);padding-bottom:8px;}
+.trust-row{display:flex;flex-direction:column;gap:9px;font-size:12.6px;color:var(--text-soft);}
+.trust-row div{display:flex;justify-content:space-between;border-bottom:1px dashed rgba(123,136,153,0.3);padding-bottom:8px;}
 .trust-row div:last-child{border-bottom:none;padding-bottom:0;}
 .trust-row b{color:var(--ink);font-weight:700;}
-.disclaimer-card{background:linear-gradient(180deg,#fff7e9,#f8eed5);border:1px solid #edddac;border-radius:20px;padding:14px 16px;font-size:12px;line-height:1.6;color:#5C3E0C;box-shadow:inset 0 1px 0 rgba(255,255,255,0.45);}
+.disclaimer-card{background:linear-gradient(180deg,#fff7e9,#f8eed5);border:1px solid #edddac;border-radius:20px;padding:14px 16px;font-size:12px;line-height:1.6;color:#5C3E0C;box-shadow:inset 0 1px 0 rgba(255,255,255,0.4);}
 .disclaimer-card b{color:#412402;}
 
 .chat-shell{
-  background:rgba(255,255,255,0.78);backdrop-filter:blur(12px);
-  border:1px solid rgba(123,136,153,0.16);border-radius:28px;box-shadow:0 26px 60px rgba(15,23,42,0.08);
-  display:flex;flex-direction:column;height:670px;overflow:hidden;
+  background:rgba(255,255,255,0.82);backdrop-filter:blur(12px);
+  border:1px solid rgba(123,136,153,0.12);border-radius:30px;box-shadow:0 30px 60px rgba(15,23,42,0.08);
+  display:flex;flex-direction:column;height:680px;overflow:hidden;
 }
 .chat-head{
-  background:linear-gradient(135deg,#062c76 0%,#0d2f8f 35%,#0d1e51 100%);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
+  background:linear-gradient(135deg,#0b245d 0%,#102d7e 35%,#0d1e4a 100%);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
 }
 .chat-head-left{display:flex;align-items:center;gap:10px;}
-.chat-head-left .status-dot{width:9px;height:9px;border-radius:50%;background:#4EE3A6;box-shadow:0 0 0 4px rgba(78,227,166,0.22);}
-.chat-head-left span{font-size:13.5px;font-weight:600;}
-.chat-head-left small{display:block;font-size:11px;color:#b8d8d4;font-weight:400;}
+.chat-head-left .status-dot{width:9px;height:9px;border-radius:50%;background:#5ae2a6;box-shadow:0 0 0 4px rgba(90,226,166,0.25);}
+.chat-head-left span{font-size:13.5px;font-weight:700;}
+.chat-head-left small{display:block;font-size:11px;color:#cddff0;font-weight:400;}
 .chat-head-actions{position:relative;}
-  .reset-btn{background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.14);color:#fff;font-size:12px;padding:7px 12px;border-radius:999px;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px;transition:all .12s ease;}
-.reset-btn:hover{background:rgba(255,255,255,0.18);transform:translateY(-1px);}
+  .reset-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);color:#fff;font-size:12px;padding:7px 12px;border-radius:999px;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px;transition:all .12s ease;}
+.reset-btn:hover{background:rgba(255,255,255,0.16);transform:translateY(-1px);}
 .reset-btn .caret{font-size:10px;opacity:.8;}
 .chat-menu{position:absolute;top:calc(100% + 8px);right:0;display:none;flex-direction:column;min-width:170px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 42px rgba(15,23,42,0.12);overflow:hidden;z-index:20;}
 .chat-menu.open{display:flex;}
@@ -122,32 +123,33 @@ body{
 .chat-menu button:hover{background:var(--teal-50);}
 .chat-menu button.end-chat{color:var(--danger);}
 
-.messages{flex:1;overflow-y:auto;padding:22px 22px 10px;display:flex;flex-direction:column;gap:16px;background:linear-gradient(180deg, rgba(249,250,251,0.8), rgba(255,255,255,0));}
+.messages{flex:1;overflow-y:auto;padding:22px 22px 10px;display:flex;flex-direction:column;gap:16px;background:linear-gradient(180deg, rgba(245,248,252,0.8), rgba(255,255,255,0));}
 .msg-row{display:flex;gap:10px;max-width:90%;}
 .msg-row.user{align-self:flex-end;flex-direction:row-reverse;}
-.avatar{width:30px;height:30px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:13px;}
-.avatar.bot{background:linear-gradient(180deg,var(--teal-700),var(--teal-900));color:#fff;box-shadow:0 10px 18px rgba(17,62,109,0.18);}
-.avatar.user{background:linear-gradient(180deg,#dfeaf3,#cfe2ea);color:var(--teal-900);}
+.avatar{width:32px;height:32px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:13px;}
+.avatar.bot{background:linear-gradient(180deg,#0f367f,#0c285d);color:#fff;box-shadow:0 12px 20px rgba(12,42,93,0.18);}
+.avatar.user{background:linear-gradient(180deg,#edf2f9,#dfeaf7);color:var(--teal-900);}
 .bubble{
-  position:relative;padding:12px 15px;border-radius:16px;font-size:14.5px;line-height:1.6;box-shadow:0 10px 18px rgba(15,23,42,0.04);
+  position:relative;padding:12px 15px;border-radius:16px;font-size:14.6px;line-height:1.62;box-shadow:0 10px 20px rgba(15,23,42,0.04);
 }
 .bubble p{margin:0 0 8px;}
 .bubble p:last-child{margin-bottom:0;}
 .bubble ul{margin:6px 0 8px;padding-left:18px;}
 .bubble li{margin-bottom:3px;}
-.msg-row.user .bubble{background:linear-gradient(180deg,#0b2f6d,#0a2559);color:#fff;border-bottom-right-radius:6px;}
+.msg-row.user .bubble{background:linear-gradient(180deg,#123779,#0a234f);color:#fff;border-bottom-right-radius:6px;}
 .msg-row.bot .bubble{
   background:linear-gradient(180deg,#fff,#f9fbff);color:var(--text);border:1px solid rgba(16,72,117,0.08);border-bottom-left-radius:6px;
-  background-image:radial-gradient(circle at 10px 0, transparent 5px, rgba(255,255,255,0.18) 5.5px);
+  background-image:radial-gradient(circle at 10px 0, transparent 5px, rgba(255,255,255,0.22) 5.5px);
   background-size:20px 6px;background-repeat:repeat-x;background-position:top left;
   border-top:none;
 }
 .bubble .rx-tag{
   display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.03em;
-  background:var(--danger-bg);color:var(--danger);padding:2px 8px;border-radius:5px;margin-bottom:8px;font-weight:600;}
+  background:var(--danger-bg);color:var(--danger);padding:2px 8px;border-radius:5px;margin-bottom:8px;font-weight:700;
+}
 .bubble .src-tag{
   display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.03em;
-  background:var(--teal-50);color:var(--teal-700);padding:2px 8px;border-radius:5px;margin-top:8px;font-weight:600;
+  background:var(--teal-50);color:var(--teal-700);padding:2px 8px;border-radius:5px;margin-top:8px;font-weight:700;
 }
 .typing{display:flex;gap:4px;padding:6px 2px;}
 .typing span{width:6px;height:6px;border-radius:50%;background:var(--text-faint);animation:blink 1.1s infinite ease-in-out;}
@@ -155,17 +157,17 @@ body{
 .typing span:nth-child(3){animation-delay:.3s;}
 @keyframes blink{0%,80%,100%{opacity:.25;transform:translateY(0);}40%{opacity:1;transform:translateY(-2px);}}
 
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;max-width:100%;padding:0 22px 14px;background:rgba(255,255,255,0.16);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;max-width:100%;padding:0 22px 14px;background:rgba(255,255,255,0.1);}
 .chip{
-  background:linear-gradient(180deg,#f2faf8,#ebf8f6);border:1px solid rgba(20,116,98,0.12);color:var(--teal-700);
+  background:linear-gradient(180deg,#f0fbf9,#ebf7f4);border:1px solid rgba(20,116,98,0.12);color:var(--teal-700);
   font-family:inherit;font-size:12.5px;padding:7px 13px;border-radius:999px;cursor:pointer;transition:all .12s ease;box-shadow:0 8px 18px rgba(15,23,42,0.02);
 }
 .chip:hover{background:var(--teal-100);border-color:var(--teal-500);transform:translateY(-1px);}
-.chip.alt{background:linear-gradient(180deg,#f4f2ff,#edebff);border-color:rgba(108,92,231,0.12);color:var(--neuro-700);}
+.chip.alt{background:linear-gradient(180deg,#f4f2ff,#eeebff);border-color:rgba(108,92,231,0.12);color:var(--neuro-700);}
 .chip.alt:hover{background:#e7e3ff;}
 .chip.contact{background:linear-gradient(180deg,#fff5e2,#f8ebd0);border-color:rgba(186,117,23,0.12);color:#5C3E0C;}
 
-.composer{border-top:1px solid rgba(123,136,153,0.18);padding:14px 18px;display:flex;gap:10px;flex-shrink:0;background:linear-gradient(180deg,rgba(239,247,247,0.9),rgba(255,255,255,0.95));}
+.composer{border-top:1px solid rgba(123,136,153,0.18);padding:14px 18px;display:flex;gap:10px;flex-shrink:0;background:linear-gradient(180deg,rgba(240,247,248,0.88),rgba(255,255,255,0.96));}
 .composer input{
   flex:1;border:1px solid rgba(123,136,153,0.18);border-radius:999px;padding:12px 18px;font-size:14px;
   font-family:inherit;outline:none;background:#fff;color:var(--text);box-shadow:inset 0 1px 2px rgba(15,23,42,0.02);
@@ -174,9 +176,9 @@ body{
 .composer button{
   background:linear-gradient(180deg,var(--teal-700),var(--teal-900));color:#fff;border:none;border-radius:999px;width:46px;height:46px;flex-shrink:0;
   cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .12s ease, box-shadow .12s ease;
-  box-shadow:0 14px 24px rgba(12,46,90,0.2);
+  box-shadow:0 16px 26px rgba(12,46,90,0.2);
 }
-.composer button:hover{transform:translateY(-1px);box-shadow:0 18px 28px rgba(12,46,90,0.22);}
+.composer button:hover{transform:translateY(-1px);box-shadow:0 20px 30px rgba(12,46,90,0.24);}
 .composer button svg{width:18px;height:18px;}
 
 ::-webkit-scrollbar{width:8px;}
@@ -194,7 +196,10 @@ body{
         <p>Derma &amp; CNS care assistant</p>
       </div>
     </div>
-    <div class="pill"><span class="dot"></span>AI Powered Engine</div>
+    <div class="masthead-meta">
+      <div class="meta-pill">Live care concierge</div>
+      <div class="meta-pill meta-pill-soft">Trusted support</div>
+    </div>
   </div>
 
   <div class="layout">
@@ -220,7 +225,7 @@ body{
       </div>
 
       <div class="disclaimer-card">
-        <b>A note on medical advice. </b> Ordo AI shares general product and service info only. It does not diagnose, prescribe, or replace a consultation with your doctor or pharmacist  especially for CNS medicines.
+        <b>A note on medical advice.</b> Ordo AI shares general product and service info only. It does not diagnose, prescribe, or replace a consultation with your doctor or pharmacist, especially for CNS medicines.
       </div>
     </div>
 
@@ -425,15 +430,11 @@ const KB = {
 
   // ---------------- CustomerCare / FALLBACK ----------------
   CustomerCare: {
-    answer: `<p>I'm here to help! You can reach Ordomed CustomerCare through the following option:<p>- Live Chat: Instant messaging support, always availabe<p>
-      <p>- Call Back: Share your issue deatils and Ordomed will call you back<p>
-      <p>Or You can reach the Ordomed team directly:</p><ul><li><b>Phone:</b> 76002 51252</li><li><b>Email:</b> customercare@ordomed.in</li></ul><p style="font-size:12.5px;color:var(--text-soft);">Ordomed never asks for payment outside its official website/app, or for "contest" or "lucky draw" payments. Report anything suspicious via the Chakshu portal or the numbers above.</p>`,
+    answer: `<p>I'm here to help! You can reach Ordomed CustomerCare through the following options:</p><ul><li><b>Live Chat:</b> Instant messaging support, always available</li><li><b>Call Back:</b> Share your issue details and Ordomed will call you back</li></ul><p>Or you can reach the Ordomed team directly:</p><ul><li><b>Phone:</b> 76002 51252</li><li><b>Email:</b> customercare@ordomed.in</li></ul><p style="font-size:12.5px;color:var(--text-soft);">Ordomed never asks for payment outside its official website/app, or for "contest" or "lucky draw" payments. Report anything suspicious via the Chakshu portal or the numbers above.</p>`,
     chips: [["Back to main menu","greeting"]]
   },
   human: {
-    answer: `<p>I'm here to help! You can reach Ordomed CustomerCare through the following option:<p>- Live Chat: Instant messaging support, always availabe<p>
-      <p>- Call Back: Share your issue deatils and Ordomed will call you back<p>
-      <p>Or You can reach the Ordomed team directly:</p><ul><li><b>Phone:</b> 76002 51252</li><li><b>Email:</b> customercare@ordomed.in</li></ul><p style="font-size:12.5px;color:var(--text-soft);">Ordomed never asks for payment outside its official website/app, or for "contest" or "lucky draw" payments. Report anything suspicious via the Chakshu portal or the numbers above.</p>`,
+    answer: `<p>I'm here to help! You can reach Ordomed CustomerCare through the following options:</p><ul><li><b>Live Chat:</b> Instant messaging support, always available</li><li><b>Call Back:</b> Share your issue details and Ordomed will call you back</li></ul><p>Or you can reach the Ordomed team directly:</p><ul><li><b>Phone:</b> 76002 51252</li><li><b>Email:</b> customercare@ordomed.in</li></ul><p style="font-size:12.5px;color:var(--text-soft);">Ordomed never asks for payment outside its official website/app, or for "contest" or "lucky draw" payments. Report anything suspicious via the Chakshu portal or the numbers above.</p>`,
     chips: [["Back to main menu","greeting"]]
   },
   fallback: {
@@ -469,9 +470,9 @@ const MULTILINGUAL_INTENTS = {
     hi: `<p>Returns, exchanges और refunds के बारे में मैं आपको ये बता सकता हूँ:</p>`
   },
   human: {
-    en: `<p>I'm here to help! You can reach Ordomed CustomerCare through the following option:<p>- Live Chat: Instant messaging support, always available<p><p>- Call Back: Share your issue details and Ordomed will call you back<p><p>Or you can reach the Ordomed team directly:</p><ul><li><b>Phone:</b> 76002 51252</li><li><b>Email:</b> customercare@ordomed.in</li></ul><p style="font-size:12.5px;color:var(--text-soft);">Ordomed never asks for payment outside its official website/app, or for "contest" or "lucky draw" payments. Report anything suspicious via the Chakshu portal or the numbers above.</p>`,
-    hinglish: `<p>Main help karne ke liye yahan hoon! Aap Ordomed CustomerCare ko in options se contact kar sakte hain:<p>- Live Chat: Instant messaging support, hamesha available<p><p>- Call Back: Apni problem share kijiye aur Ordomed aapko callback karega<p><p>Ya phir direct team se contact kijiye:</p><ul><li><b>Phone:</b> 76002 51252</li><li><b>Email:</b> customercare@ordomed.in</li></ul><p style="font-size:12.5px;color:var(--text-soft);">Ordomed official website/app ke alawa payment nahi maangta, aur na hi "contest" ya "lucky draw" ke liye. Kuch suspicious ho to Chakshu portal ya upar diye gaye numbers par report kijiye.</p>`,
-    hi: `<p>मैं मदद करने के लिए यहाँ हूँ! आप Ordomed CustomerCare से इन विकल्पों के माध्यम से संपर्क कर सकते हैं:<p>- Live Chat: Instant messaging support, हमेशा उपलब्ध<p><p>- Call Back: अपनी समस्या बताइए और Ordomed आपको callback करेगा<p><p>या सीधे टीम से संपर्क करें:</p><ul><li><b>Phone:</b> 76002 51252</li><li><b>Email:</b> customercare@ordomed.in</li></ul><p style="font-size:12.5px;color:var(--text-soft);">Ordomed official website/app के अलावा payment नहीं मांगता, और न ही "contest" या "lucky draw" के लिए। कुछ suspicious लगे तो Chakshu portal या ऊपर दिए गए numbers पर report करें।</p>`
+    en: `<p>I'm here to help! You can reach Ordomed CustomerCare through the following options:</p><ul><li><b>Live Chat:</b> Instant messaging support, always available</li><li><b>Call Back:</b> Share your issue details and Ordomed will call you back</li></ul><p>Or you can reach the Ordomed team directly:</p><ul><li><b>Phone:</b> 76002 51252</li><li><b>Email:</b> customercare@ordomed.in</li></ul><p style="font-size:12.5px;color:var(--text-soft);">Ordomed never asks for payment outside its official website/app, or for "contest" or "lucky draw" payments. Report anything suspicious via the Chakshu portal or the numbers above.</p>`,
+    hinglish: `<p>Main help karne ke liye yahan hoon! Aap Ordomed CustomerCare ko in options se contact kar sakte hain:</p><ul><li><b>Live Chat:</b> Instant messaging support, hamesha available</li><li><b>Call Back:</b> Apni problem share kijiye aur Ordomed aapko callback karega</li></ul><p>Ya phir direct team se contact kijiye:</p><ul><li><b>Phone:</b> 76002 51252</li><li><b>Email:</b> customercare@ordomed.in</li></ul><p style="font-size:12.5px;color:var(--text-soft);">Ordomed official website/app ke alawa payment nahi maangta, aur na hi "contest" ya "lucky draw" ke liye. Kuch suspicious ho to Chakshu portal ya upar diye gaye numbers par report kijiye.</p>`,
+    hi: `<p>मैं मदद करने के लिए यहाँ हूँ! आप Ordomed CustomerCare से इन विकल्पों के माध्यम से संपर्क कर सकते हैं:</p><ul><li><b>Live Chat:</b> Instant messaging support, हमेशा उपलब्ध</li><li><b>Call Back:</b> अपनी समस्या बताइए और Ordomed आपको callback करेगा</li></ul><p>या सीधे टीम से संपर्क करें:</p><ul><li><b>Phone:</b> 76002 51252</li><li><b>Email:</b> customercare@ordomed.in</li></ul><p style="font-size:12.5px;color:var(--text-soft);">Ordomed official website/app के अलावा payment नहीं मांगता, और न ही "contest" या "lucky draw" के लिए। कुछ suspicious लगे तो Chakshu portal या ऊपर दिए गए numbers पर report करें।</p>`
   },
   fallback: {
     en: `<p>I don't have a confident answer for that one yet  I'm focused on Derma, CNS, orders, shipping and returns for Ordomed. You can rephrase, pick a topic below, or reach our team directly.</p>`,
@@ -647,6 +648,110 @@ function routeFreeText(text){
   return analyzeQuestion(text);
 }
 
+// ---------------- GENERAL KNOWLEDGE / LLM FALLBACK ----------------
+const LLM_CONFIG = {
+  enabled: Boolean(window.ORDO_LLM_CONFIG && window.ORDO_LLM_CONFIG.apiKey),
+  provider: (window.ORDO_LLM_CONFIG && window.ORDO_LLM_CONFIG.provider) || 'openai',
+  model: (window.ORDO_LLM_CONFIG && window.ORDO_LLM_CONFIG.model) || 'gpt-4.1-mini',
+  apiKey: (window.ORDO_LLM_CONFIG && window.ORDO_LLM_CONFIG.apiKey) || '',
+  endpoint: (window.ORDO_LLM_CONFIG && window.ORDO_LLM_CONFIG.endpoint) || 'https://api.openai.com/v1/chat/completions'
+};
+
+function getGeneralKnowledgePrompt(question, language){
+  const languagePrompt = language === 'hinglish'
+    ? 'Respond in natural Hinglish, mixing Hindi and English naturally.'
+    : language === 'hi'
+      ? 'Respond in Hindi.'
+      : 'Respond in English.';
+
+  return [
+    {
+      role: 'system',
+      content: 'You are Ordo AI, a trustworthy healthcare and customer support assistant. Provide concise, helpful, factual answers. If the user asks for medical advice, direct them to a licensed healthcare professional and avoid diagnosis or prescription instructions.'
+    },
+    {
+      role: 'user',
+      content: `${languagePrompt}\n\nUser question: ${question}`
+    }
+  ];
+}
+
+function getProviderRequest(question, language){
+  const prompt = getGeneralKnowledgePrompt(question, language);
+
+  if (LLM_CONFIG.provider === 'gemini') {
+    const text = prompt.map(msg => `${msg.role === 'system' ? 'System:' : 'User:'} ${msg.content}`).join('\n\n');
+    return {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{ role: 'user', parts: [{ text }] }],
+        generationConfig: {
+          temperature: 0.7,
+          maxOutputTokens: 500
+        }
+      })
+    };
+  }
+
+  return {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${LLM_CONFIG.apiKey}`
+    },
+    body: JSON.stringify({
+      model: LLM_CONFIG.model,
+      messages: prompt,
+      temperature: 0.7,
+      max_tokens: 500
+    })
+  };
+}
+
+async function fetchGeneralKnowledgeAnswer(question, language){
+  const apiKey = LLM_CONFIG.apiKey;
+
+  if (!apiKey) {
+    return null;
+  }
+
+  const provider = (LLM_CONFIG.provider || 'openai').toLowerCase();
+  let endpoint = LLM_CONFIG.endpoint;
+
+  try {
+    if (provider === 'gemini') {
+      endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${LLM_CONFIG.model}:generateContent?key=${apiKey}`;
+    }
+
+    const response = await fetch(endpoint, getProviderRequest(question, language));
+
+    if (!response.ok) {
+      throw new Error('LLM request failed');
+    }
+
+    const data = await response.json();
+
+    if (provider === 'gemini') {
+      const content = data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts;
+      if (!content) return null;
+      return content.map(part => part.text || '').join('\n').trim();
+    }
+
+    const content = data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content;
+    return content ? content.trim() : null;
+  } catch (error) {
+    console.warn('LLM fallback failed:', error);
+    return null;
+  }
+}
+
+function shouldUseGeneralKnowledge(intentId, text){
+  if (intentId !== 'fallback') return false;
+  const generalPatterns = /(who is|what is|why|how does|explain|compare|tell me|can you|what are|when is|where is|which|difference between|summarize|help me with)/i;
+  return generalPatterns.test(text) || text.length > 28;
+}
+
 // ---------------- CHAT ENGINE ----------------
 const messagesEl = document.getElementById('messages');
 const liveChipsEl = document.getElementById('liveChips');
@@ -719,7 +824,7 @@ function goTo(intentId, userLabel){
   answerIntent(intentId, userLabel, language);
 }
 
-function handleUserText(){
+async function handleUserText(){
   const text = inputEl.value.trim();
   if (!text) return;
   addUserMessage(text);
@@ -728,6 +833,18 @@ function handleUserText(){
 
   const language = detectUserLanguage(text);
   const intentId = routeFreeText(text);
+
+  if (shouldUseGeneralKnowledge(intentId, text)) {
+    addBotTyping();
+    const llmAnswer = await fetchGeneralKnowledgeAnswer(text, language);
+    removeBotTyping();
+
+    if (llmAnswer) {
+      addBotMessage(`<p>${escapeHtml(llmAnswer).replace(/\n/g, '<br>')}</p>`);
+      return;
+    }
+  }
+
   answerIntent(intentId, null, language);
 }
 

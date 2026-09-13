@@ -6,13 +6,13 @@ A standalone, browser-based Ordo AI customer-care chatbot for:
 - CNS & neurology
 - Orders & shipping
 - Returns & refunds
-- CustomerCare
+- Customer Care
 
 ## Run locally
 
 No build tools or dependencies are required.
 
-1. Clone/download this repository.
+1. Clone or download this repository.
 2. Open `index.html` in a browser.
 
 The chatbot is implemented as a self-contained HTML/CSS/JavaScript application.
@@ -38,7 +38,7 @@ ordo-ai-github/
 ## Product Manager summary
 
 ### Objective
-Improve the customer-support experience by making the chatbot answer questions instantly and accurately without noticeable waiting time.
+Improve the customer support experience by making the chatbot answer questions instantly and accurately without noticeable waiting time.
 
 ### User value
 - Faster resolution for common questions about derma, CNS, shipping, and returns
