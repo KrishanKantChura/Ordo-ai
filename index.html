@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ordo AI - Derma &amp; CNS Care Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#008c95;
+  --teal-900:#002395;
+  --teal-700:#032364;
+  --teal-600:#158A6D;
+  --teal-500:#1d399e;
+  --teal-100:#DCF1E7;
+  --teal-50:#F3FAF7;
+  --neuro-700:#3C3489;
+  --neuro-100:#E9E7FB;
+  --amber-600:#BA7517;
+  --amber-100:#FAEEDA;
+  --paper:#FBFAF6;
+  --card:#FFFFFF;
+  --line:#E1DED2;
+  --text:#1B241F;
+  --text-soft:#5B6560;
+  --text-faint:#8B948E;
+  --danger:#A32D2D;
+  --danger-bg:#FCEBEB;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(11,46,42,0.06), 0 8px 24px -12px rgba(11,46,42,0.18);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--paper);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(11,46,42,0.05) 1px, transparent 0);
+  background-size:22px 22px;
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:28px 16px 60px;
+}
+.wrap{width:100%;max-width:1120px;}
+.masthead{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand-mark{
+  width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(180deg,var(--teal-600),var(--teal-900));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:19px;
+  flex-shrink:0;
+}
+.brand-text h1{font-family:'Fraunces',serif;font-weight:600;font-size:24px;margin:0;color:var(--teal-900);letter-spacing:-0.01em;}
+.brand-text p{margin:2px 0 0;font-size:13px;color:var(--text-soft);}
+.pill{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--card);border:1px solid var(--line);
+  padding:7px 13px;border-radius:99px;font-size:12.5px;color:var(--text-soft);
+  font-family:'IBM Plex Mono',monospace;
+}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--teal-500);box-shadow:0 0 0 3px var(--teal-100);}
+
+.layout{display:grid;grid-template-columns:280px 1fr;gap:20px;align-items:start;}
+@media (max-width:860px){.layout{grid-template-columns:1fr;}}
+
+.sidebar{display:flex;flex-direction:column;gap:14px;position:sticky;top:20px;}
+@media (max-width:860px){.sidebar{position:static;order:2;}}
+.side-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);}
+.side-card h3{font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-faint);margin:0 0 10px;font-weight:600;}
+.topic-btn{
+  width:100%;display:flex;align-items:center;gap:10px;
+  background:transparent;border:1px solid transparent;border-radius:10px;
+  padding:9px 10px;margin-bottom:4px;text-align:left;cursor:pointer;
+  font-family:inherit;font-size:13.5px;color:var(--text);transition:background .12s,border-color .12s;
+}
+.topic-btn:hover{background:var(--teal-50);border-color:var(--teal-100);}
+.topic-swatch{width:9px;height:9px;border-radius:3px;flex-shrink:0;}
+.sw-derma{background:var(--teal-500);}
+.sw-cns{background:var(--neuro-700);}
+.sw-order{background:#378ADD;}
+.sw-return{background:#D85A30;}
+.sw-safety{background:var(--amber-600);}
+.trust-row{display:flex;flex-direction:column;gap:9px;font-size:12.5px;color:var(--text-soft);}
+.trust-row div{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:8px;}
+.trust-row div:last-child{border-bottom:none;padding-bottom:0;}
+.trust-row b{color:var(--ink);font-weight:600;}
+.disclaimer-card{background:var(--amber-100);border:1px solid #EFD9A8;border-radius:var(--radius);padding:14px 16px;font-size:12px;line-height:1.55;color:#5C3E0C;}
+.disclaimer-card b{color:#412402;}
+
+.chat-shell{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;height:640px;overflow:hidden;}
+.chat-head{
+  background:var(--teal-900);color:#fff;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
+}
+.chat-head-left{display:flex;align-items:center;gap:10px;}
+.chat-head-left .status-dot{width:8px;height:8px;border-radius:50%;background:#4EE3A6;box-shadow:0 0 0 3px rgba(78,227,166,0.25);}
+.chat-head-left span{font-size:13.5px;font-weight:500;}
+.chat-head-left small{display:block;font-size:11px;color:#9FCFC0;font-weight:400;}
+.chat-head-actions{position:relative;}
+  .reset-btn{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);color:#fff;font-size:12px;padding:6px 12px;border-radius:99px;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px;}
+.reset-btn:hover{background:rgba(255,255,255,0.18);}
+.reset-btn .caret{font-size:10px;opacity:.8;}
+.chat-menu{position:absolute;top:calc(100% + 8px);right:0;display:none;flex-direction:column;min-width:150px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;z-index:20;}
+.chat-menu.open{display:flex;}
+.chat-menu button{border:none;background:transparent;padding:10px 12px;text-align:left;font:inherit;font-size:13px;color:var(--text);cursor:pointer;}
+.chat-menu button:hover{background:var(--teal-50);}
+.chat-menu button.end-chat{color:var(--danger);}
+
+.messages{flex:1;overflow-y:auto;padding:22px 22px 10px;display:flex;flex-direction:column;gap:16px;}
+.msg-row{display:flex;gap:10px;max-width:88%;}
+.msg-row.user{align-self:flex-end;flex-direction:row-reverse;}
+.avatar{width:30px;height:30px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:13px;}
+.avatar.bot{background:var(--teal-700);color:#fff;}
+.avatar.user{background:#DDE6E2;color:var(--teal-900);}
+.bubble{
+  position:relative;padding:12px 15px;border-radius:14px;font-size:14.5px;line-height:1.55;
+}
+.bubble p{margin:0 0 8px;}
+.bubble p:last-child{margin-bottom:0;}
+.bubble ul{margin:6px 0 8px;padding-left:18px;}
+.bubble li{margin-bottom:3px;}
+.msg-row.user .bubble{background:var(--teal-700);color:#fff;border-bottom-right-radius:4px;}
+.msg-row.bot .bubble{
+  background:#fff;color:var(--text);border:1px solid var(--line);border-bottom-left-radius:4px;
+  background-image:radial-gradient(circle at 10px 0, transparent 5px, #fff 5.5px);
+  background-size:20px 6px;background-repeat:repeat-x;background-position:top left;
+  border-top:none;
+}
+.bubble .rx-tag{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.03em;
+  background:var(--danger-bg);color:var(--danger);padding:2px 8px;border-radius:5px;margin-bottom:8px;font-weight:500;
+}
+.bubble .src-tag{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.03em;
+  background:var(--teal-50);color:var(--teal-700);padding:2px 8px;border-radius:5px;margin-top:8px;font-weight:500;
+}
+.typing{display:flex;gap:4px;padding:6px 2px;}
+.typing span{width:6px;height:6px;border-radius:50%;background:var(--text-faint);animation:blink 1.1s infinite ease-in-out;}
+.typing span:nth-child(2){animation-delay:.15s;}
+.typing span:nth-child(3){animation-delay:.3s;}
+@keyframes blink{0%,80%,100%{opacity:.25;transform:translateY(0);}40%{opacity:1;transform:translateY(-2px);}}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;max-width:100%;}
+.chip{
+  background:var(--teal-50);border:1px solid var(--teal-100);color:var(--teal-700);
+  font-family:inherit;font-size:12.5px;padding:7px 13px;border-radius:99px;cursor:pointer;transition:all .12s;
+}
+.chip:hover{background:var(--teal-100);border-color:var(--teal-500);}
+.chip.alt{background:var(--neuro-100);border-color:#D6D2F5;color:var(--neuro-700);}
+.chip.alt:hover{background:#D6D2F5;}
+.chip.contact{background:var(--amber-100);border-color:#EFD9A8;color:#5C3E0C;}
+
+.composer{border-top:1px solid var(--line);padding:14px 18px;display:flex;gap:10px;flex-shrink:0;background:var(--teal-50);}
+.composer input{
+  flex:1;border:1px solid var(--line);border-radius:99px;padding:11px 18px;font-size:14px;
+  font-family:inherit;outline:none;background:#fff;color:var(--text);
+}
+.composer input:focus{border-color:var(--teal-500);box-shadow:0 0 0 3px var(--teal-100);}
+.composer button{
+  background:var(--teal-700);color:#fff;border:none;border-radius:99px;width:44px;height:44px;flex-shrink:0;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .12s;
+}
+.composer button:hover{background:var(--teal-900);}
+.composer button svg{width:18px;height:18px;}
+
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="brand">
+      <div class="brand-mark">O</div>
+      <div class="brand-text">
+        <h1>Ordo AI</h1>
+        <p>Derma &amp; CNS care assistant</p>
+      </div>
+    </div>
+    <div class="pill"><span class="dot"></span>Ai Powered Engein</div>
+  </div>
+
+  <div class="layout">
+
+    <div class="sidebar">
+      <div class="side-card">
+        <h3>Browse topics</h3>
+        <button class="topic-btn" data-topic="derma_menu"><span class="topic-swatch sw-derma"></span>Derma &amp; skincare</button>
+        <button class="topic-btn" data-topic="cns_menu"><span class="topic-swatch sw-cns"></span>CNS &amp; neurology</button>
+        <button class="topic-btn" data-topic="order_menu"><span class="topic-swatch sw-order"></span>Orders &amp; shipping</button>
+        <button class="topic-btn" data-topic="return_menu"><span class="topic-swatch sw-return"></span>Returns &amp; refunds</button>
+        <button class="topic-btn" data-topic="human"><span class="topic-swatch sw-safety"></span>CustomerCare</button>
+      </div>
+
+      <div class="side-card">
+        <h3>Why customers trust us</h3>
+        <div class="trust-row">
+          <div><span>Lives touched</span><b>100K+</b></div>
+          <div><span>Cities covered</span><b>50+</b></div>
+          <div><span>Genuine medicines</span><b>100%</b></div>
+          <div><span>App rating</span><b>4.8 / 5</b></div>
+        </div>
+      </div>
+
+      <div class="disclaimer-card">
+        <b>A note on medical advice. </b> Ordo AI shares general product and service info only. It does not diagnose, prescribe, or replace a consultation with your doctor or pharmacist  especially for CNS medicines.
+      </div>
+    </div>
+
+    <div class="chat-shell">
+      <div class="chat-head">
+        <div class="chat-head-left">
+          <span class="status-dot"></span>
+          <div>
+            <span>Ordo AI</span>
+            <small>Powered by Ordomed · usually replies instantly</small>
+          </div>
+        </div>
+        <div class="chat-head-actions">
+          <button class="reset-btn" id="resetBtn" aria-haspopup="true" aria-expanded="false">Restart chat <span class="caret">▾</span></button>
+          <div class="chat-menu" id="chatMenu" role="menu">
+            <button type="button" data-action="restart" role="menuitem">Restart chat</button>
+            <button type="button" class="end-chat" data-action="end" role="menuitem">End chat</button>
+          </div>
+        </div>
+      </div>
+      <div class="messages" id="messages"></div>
+      <div class="chips" id="liveChips" style="padding:0 22px 14px;"></div>
+      <div class="composer">
+        <input type="text" id="userInput" placeholder="Ask about acne, seizures, delivery, returns..." autocomplete="off">
+        <button id="sendBtn" aria-label="Send">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ---------------------------------------------------------
+   ORDO AI  rule based FAQ engine
+   Content sourced from ordomed.in (About, Shipping Policy,
+   Return Policy, product/category pages) plus standard
+   pharmacy-chatbot practice for Derma + CNS categories.
+--------------------------------------------------------- */
+
+const KB = {
+
+  // ---------------- GREETING / MENUS ----------------
+  greeting: {
+    answer: `<p>Hi, I'm <b>Ordo AI</b> Ordomed's care assistant for Dermatology and CNS (neurology) questions, plus your orders, shipping and returns.</p><p>What would you like help with?</p>`,
+    chips: [["Derma & skincare","derma_menu"],["CNS & neurology","cns_menu"],["Orders & shipping","order_menu"],["Returns & refunds","return_menu"]]
+  },
+
+  derma_menu: {
+    answer: `<p>Ordomed's Derma range covers <b>Acne, Aging, Dull Skin, Pigmentation</b> and <b>Sun Damage</b>  plus prescription creams for infections like eczema and fungal skin conditions. Pick a topic:</p>`,
+    chips: [["What causes acne?","derma_acne_cause"],["Best products for acne","derma_acne_products"],["Help with dark spots / pigmentation","derma_pigmentation"],["Anti-aging options","derma_aging"],["Do I need sunscreen daily?","derma_sunscreen"],["Skin infection creams (Tacrolimus, Mupirocin...)","derma_infection_menu"],["Build me a routine","derma_routine"]]
+  },
+
+  cns_menu: {
+    answer: `<p>Ordomed's CNS range focuses on <b>epilepsy and seizure-care medicines</b>, prescribed and monitored by a neurologist. Here's what I can walk you through:</p><p class="rx-note"><span class="rx-tag">PRESCRIPTION ONLY</span></p>`,
+    chips: [["What is Levetiracetam (Orbilexa)?","cns_leve"],["What is Brivaracetam (Brivibit)?","cns_briva"],["Can I buy CNS medicines without a prescription?","cns_rx_required"],["Can I change my dose myself?","cns_dose_change"],["What if I miss a dose?","cns_missed_dose"],["CustomerCare about my condition","human"]]
+  },
+
+  order_menu: {
+    answer: `<p>Happy to help with ordering. What do you need?</p>`,
+    chips: [["How do I place an order?","order_place"],["How do I upload a prescription?","order_upload_rx"],["What payment methods do you accept?","order_payment"],["How long does delivery take?","order_delivery_time"],["Which cities do you deliver to?","order_cities"],["How much is shipping?","order_shipping_cost"],["Can I track my order?","order_tracking"],["Is Ordomed genuine and trustworthy?","order_genuine"]]
+  },
+
+  return_menu: {
+    answer: `<p>Here's what I can tell you about returns, exchanges and refunds:</p>`,
+    chips: [["What is your return policy?","return_policy"],["Can I return medicines?","return_medicines"],["How do refunds work?","return_refund_process"],["What can't be returned?","return_exceptions"],["My order arrived damaged","return_damaged"]]
+  },
+
+  derma_infection_menu: {
+    answer: `<p>These are prescription (Rx) creams for infections and inflammatory skin conditions  a doctor should confirm the diagnosis before you start one:</p>`,
+    chips: [["Tacrolimus cream  what's it for?","derma_tacrolimus"],["Mupirocin ointment  what's it for?","derma_mupirocin"],["Luliconazole cream  what's it for?","derma_luliconazole"],["Do infection creams need a prescription?","derma_infection_rx"]]
+  },
+
+  // ---------------- DERMA ----------------
+  derma_acne_cause: {
+    answer: `<p>Acne develops when hair follicles get clogged with excess oil, dead skin cells and bacteria  leading to blackheads, whiteheads and, in more inflamed cases, painful breakouts. It's extremely common, from teenage hormonal acne to adult breakouts triggered by stress, diet or skincare products.</p><p class="src-tag">Source: Ordomed blog  Complete Acne Treatment Guide</p>`,
+    chips: [["What products help with acne?","derma_acne_products"],["How long until I see results?","derma_acne_results"],["Back to Derma topics","derma_menu"]]
+  },
+  derma_acne_products: {
+    answer: `<p>Two Ordomed best-sellers for acne-prone skin:</p><ul><li><b>Acnebit 2.5% Benzoyl Peroxide Gel</b>  targets acne-causing bacteria and excess oil, good for active breakouts.</li><li><b>Tretinoin Retinoid Acne Treatment Cream</b>  a prescription retinoid that speeds up cell turnover and unclogs pores.</li></ul><p><span class="rx-tag">TRETINOIN NEEDS A PRESCRIPTION</span></p>`,
+    chips: [["Can I use both together?","derma_acne_combo"],["How long until I see results?","derma_acne_results"],["Back to Derma topics","derma_menu"]]
+  },
+  derma_acne_combo: {
+    answer: `<p>Benzoyl peroxide and tretinoin are sometimes used together, but combining actives can increase dryness and irritation if not sequenced correctly (e.g. different times of day). Please have a dermatologist confirm a routine that suits your skin before combining prescription actives  I can't give a personalised regimen.</p>`,
+    chips: [["Build me a general routine","derma_routine"],["CustomerCare","human"],["Back to Derma topics","derma_menu"]]
+  },
+  derma_acne_results: {
+    answer: `<p>Most acne treatments need consistent use for <b>6–8 weeks</b> before you see a clear difference, since skin cell turnover takes time. Stopping early is the most common reason people feel a product "didn't work." If there's no improvement after 8–10 weeks, or if things get worse, that's a good time to check in with a dermatologist.</p>`,
+    chips: [["What products help with acne?","derma_acne_products"],["Back to Derma topics","derma_menu"]]
+  },
+  derma_pigmentation: {
+    answer: `<p>For dark spots, uneven tone and pigmentation, the ingredients to look for are:</p><ul><li><b>Vitamin C serum (10%)</b>  brightens dull skin and fades pigmentation with regular use.</li><li><b>Niacinamide serum (10%)</b>  evens out tone and calms redness.</li></ul><p>Both are more effective alongside daily sunscreen, since unprotected sun exposure is what darkens spots further.</p>`,
+    chips: [["Do I need sunscreen daily?","derma_sunscreen"],["What about anti-aging?","derma_aging"],["Back to Derma topics","derma_menu"]]
+  },
+  derma_aging: {
+    answer: `<p>Ordomed's anti-aging pick is the <b>Granactive Retinoid 0.2% Night Cream</b>  a gentler alternative to classic retinol that's designed to be less irritating while still supporting collagen turnover and smoother texture over time.</p><p>Retinoids increase sun sensitivity, so daytime SPF is essential alongside night-time use.</p>`,
+    chips: [["Do I need sunscreen daily?","derma_sunscreen"],["Build me a routine","derma_routine"],["Back to Derma topics","derma_menu"]]
+  },
+  derma_sunscreen: {
+    answer: `<p>Yes  daily sunscreen is the single most important step for pigmentation, anti-aging and general skin health, rain or shine, indoors or out (UV passes through windows and clouds). Ordomed's <b>SPF50 Silicone Gel</b> is a lightweight, non-greasy, broad-spectrum option that layers well under makeup.</p>`,
+    chips: [["Help with pigmentation","derma_pigmentation"],["Back to Derma topics","derma_menu"]]
+  },
+  derma_routine: {
+    answer: `<p>A simple general routine looks like: <b>cleanse → treat (serum/active) → moisturise → SPF (AM only)</b>. The right actives depend on your specific concern and skin type, so for a personalised plan I'd point you to Ordomed's 3-minute Skin Assessment on the website, or a dermatologist for prescription-strength actives.</p>`,
+    chips: [["Help with acne","derma_acne_cause"],["Help with pigmentation","derma_pigmentation"],["Back to Derma topics","derma_menu"]]
+  },
+  derma_tacrolimus: {
+    answer: `<p><b>Tacrolimus Skin Infection Care Cream</b> is a non-steroidal ointment that calms eczema flare-ups and controls itching  without the skin-thinning risk that comes with long-term steroid creams. It's part of Ordomed's prescription (Rx) range.</p><p><span class="rx-tag">PRESCRIPTION REQUIRED</span></p>`,
+    chips: [["Mupirocin  what's it for?","derma_mupirocin"],["Luliconazole  what's it for?","derma_luliconazole"],["Back to infection creams","derma_infection_menu"]]
+  },
+  derma_mupirocin: {
+    answer: `<p><b>Mupirocin Skin Healing Ointment</b> is a precision topical antibiotic that clears localized bacterial skin infections like impetigo and infected minor wounds. It works through a mechanism that avoids cross-resistance with other antibiotic classes.</p><p><span class="rx-tag">PRESCRIPTION REQUIRED</span></p>`,
+    chips: [["Tacrolimus  what's it for?","derma_tacrolimus"],["Luliconazole  what's it for?","derma_luliconazole"],["Back to infection creams","derma_infection_menu"]]
+  },
+  derma_luliconazole: {
+    answer: `<p><b>Luliconazole 1% Antifungal Skin Care Cream</b> is designed for targeted support in fungal-related skin concerns, such as ringworm or athlete's foot type infections.</p>`,
+    chips: [["Tacrolimus  what's it for?","derma_tacrolimus"],["Mupirocin  what's it for?","derma_mupirocin"],["Back to infection creams","derma_infection_menu"]]
+  },
+  derma_infection_rx: {
+    answer: `<p>Most infection-care creams on Ordomed (Tacrolimus, Mupirocin, and several antifungals) are prescription-only, since using the wrong antibiotic or steroid-alternative on the wrong condition can make things worse. Upload a valid prescription at checkout and our pharmacist team verifies it before dispatch.</p>`,
+    chips: [["How do I upload a prescription?","order_upload_rx"],["Back to infection creams","derma_infection_menu"]]
+  },
+
+  // ---------------- CNS ----------------
+  cns_leve: {
+    answer: `<p><b>Levetiracetam 500mg (Orbilexa)</b> is a prescription antiepileptic medicine used alone or alongside other medicines to control different types of seizures in epilepsy.</p><p><span class="rx-tag">PRESCRIPTION REQUIRED</span></p>`,
+    chips: [["What is Brivaracetam (Brivibit)?","cns_briva"],["Can I change my dose myself?","cns_dose_change"],["Back to CNS topics","cns_menu"]]
+  },
+  cns_briva: {
+    answer: `<p><b>Brivaracetam 100mg (Brivibit)</b> is a prescription antiepileptic used as an add-on (adjunctive) therapy to control partial-onset seizures, for patients aged 16 and above.</p><p><span class="rx-tag">PRESCRIPTION REQUIRED</span></p>`,
+    chips: [["What is Levetiracetam (Orbilexa)?","cns_leve"],["What if I miss a dose?","cns_missed_dose"],["Back to CNS topics","cns_menu"]]
+  },
+  cns_rx_required: {
+    answer: `<p>No  all CNS medicines on Ordomed are strictly prescription-only. Epilepsy and neurology medicines need a neurologist's diagnosis, correct dosing and ongoing monitoring, so we verify every prescription before dispatch. This protects you  seizure medicines are not safe to start, stop or switch without medical supervision.</p>`,
+    chips: [["How do I upload a prescription?","order_upload_rx"],["Back to CNS topics","cns_menu"]]
+  },
+  cns_dose_change: {
+    answer: `<p>Please never change the dose, frequency, or brand of a seizure medicine on your own  even small changes can trigger breakthrough seizures or withdrawal effects. Any adjustment should come from your neurologist. If cost or availability is the issue, our pharmacist team can help you find the exact prescribed formulation rather than a substitute.</p>`,
+    chips: [["CustomerCare","human"],["Back to CNS topics","cns_menu"]]
+  },
+  cns_missed_dose: {
+    answer: `<p>I can't give personal dosing instructions, since the right action depends on your specific medicine and seizure history. As a general rule, most seizure medicine guidance says: take it as soon as you remember unless it's nearly time for the next dose  but please confirm this with your neurologist or pharmacist, and never double up without checking first.</p><p>If a missed dose has led to a seizure or you're unsure what to do right now, please contact your doctor or emergency services immediately rather than waiting on chat.</p>`,
+    chips: [["CustomerCare","human"],["Back to CNS topics","cns_menu"]]
+  },
+
+  // ---------------- ORDERS / SHIPPING ----------------
+  order_place: {
+    answer: `<p>Placing an order is simple: browse or search for your product → add to cart → if it's a prescription item, upload your prescription at checkout → choose a payment method → confirm. You'll get order updates by email, and can also order through the Ordomed Android app.</p>`,
+    chips: [["How do I upload a prescription?","order_upload_rx"],["What payment methods do you accept?","order_payment"],["Back to Orders","order_menu"]]
+  },
+  order_upload_rx: {
+    answer: `<p>At checkout, you'll see an option to upload your prescription as a photo or PDF for any Rx-marked item. Our pharmacist team verifies it before the order ships  this applies to all Derma prescription creams and every CNS medicine.</p>`,
+    chips: [["How do I place an order?","order_place"],["Back to Orders","order_menu"]]
+  },
+  order_payment: {
+    answer: `<p>Payment options are shown securely at checkout on the Ordomed website and app. For the current live list of methods (cards, UPI, wallets, etc.) and any active offers, checkout is the most accurate place to check  pricing pages can change.</p>`,
+    chips: [["How do I place an order?","order_place"],["Back to Orders","order_menu"]]
+  },
+  order_delivery_time: {
+    answer: `<p>Ordomed aims to fulfil orders within <b>1–5 business days</b> from the date of shipping (Monday–Friday, excluding holidays). Actual delivery can vary depending on your location, the courier, and whether items ship in separate parcels.</p>`,
+    chips: [["Which cities do you deliver to?","order_cities"],["Can I track my order?","order_tracking"],["Back to Orders","order_menu"]]
+  },
+  order_cities: {
+    answer: `<p>Ordomed currently delivers to <b>50+ cities across India</b>. Deliveries are only made to addresses within India  even for orders placed by customers abroad, the delivery address must be in India.</p>`,
+    chips: [["How long does delivery take?","order_delivery_time"],["Back to Orders","order_menu"]]
+  },
+  order_shipping_cost: {
+    answer: `<p>Shipping cost depends on your order's weight and delivery method, and is calculated automatically once you reach checkout  add your items to cart and the exact charge will show before you pay. Remote areas or heavy/large items may carry an additional charge, which is always shown upfront.</p>`,
+    chips: [["How long does delivery take?","order_delivery_time"],["Back to Orders","order_menu"]]
+  },
+  order_tracking: {
+    answer: `<p>Yes  once your order ships, you'll receive tracking details so you can follow it to your door. If tracking hasn't updated or something looks off, our support team can look into it directly.</p>`,
+    chips: [["CustomerCare","human"],["Back to Orders","order_menu"]]
+  },
+  order_genuine: {
+    answer: `<p>Ordomed sources every medicine directly from authorized distributors, so you get 100% genuine products  not grey-market stock. The platform has supported <b>1 million+</b> customers across <b>50+ cities</b>, with a <b>4.8-star</b> app rating. All prescription products are also checked by verified pharmacists before dispatch.</p><p style="font-size:12.5px;color:var(--text-soft);">Reminder: Ordomed never asks for payment outside its official website or app, and never runs "lucky draw" style contests.</p>`,
+    chips: [["How do I place an order?","order_place"],["Back to Orders","order_menu"]]
+  },
+
+  // ---------------- RETURNS ----------------
+  return_policy: {
+    answer: `<p>You can return unopened items in original packaging within <b>7 days</b> of purchase, with your receipt or proof of purchase. After 7 days, we're unable to offer a refund or exchange. Once we receive the return, we inspect it and email you with the outcome.</p>`,
+    chips: [["Can I return medicines?","return_medicines"],["How do refunds work?","return_refund_process"],["Back to Returns","return_menu"]]
+  },
+  return_medicines: {
+    answer: `<p>Some health and personal care items are non-returnable for safety and hygiene reasons, alongside perishables, intimate/sanitary goods and hazardous materials. Sale-priced items are also non-refundable. If a medicine arrived <b>damaged or defective</b>, that's different  we'll exchange it once we verify the issue.</p>`,
+    chips: [["What can't be returned?","return_exceptions"],["My order arrived damaged","return_damaged"],["Back to Returns","return_menu"]]
+  },
+  return_refund_process: {
+    answer: `<p>Once your return is received and inspected, we'll email you the outcome. If approved, the refund is credited automatically to your original payment method. Note: shipping and handling charges are non-refundable, and return shipping must be prepaid and insured by you.</p>`,
+    chips: [["What is your return policy?","return_policy"],["Back to Returns","return_menu"]]
+  },
+  return_exceptions: {
+    answer: `<p>These categories can't be returned or exchanged:</p><ul><li>Perishable goods (food, flowers, etc.)</li><li>Intimate or sanitary goods</li><li>Hazardous or flammable materials</li><li>Gift cards &amp; downloadable software</li><li>Sale-priced items</li><li>Some health and personal care items</li></ul>`,
+    chips: [["My order arrived damaged","return_damaged"],["Back to Returns","return_menu"]]
+  },
+  return_damaged: {
+    answer: `<p>Sorry to hear that  please email <b>customercare@ordomed.in</b> right away with photos of the damage and your order number. If a product is genuinely defective or damaged in transit, Ordomed will arrange a replacement once the issue is verified.</p>`,
+    chips: [["CustomerCare","human"],["Back to Returns","return_menu"]]
+  },
+
+  // ---------------- CustomerCare / FALLBACK ----------------
+  CustomerCare: {
+    answer: `<p>I'm here to help! You can reach Ordomed CustomerCare through the following option:<p>- Live Chat: Instant messaging support, always availabe<p>
+      <p>- Call Back: Share your issue deatils and Ordomed will call you back<p>
+      <p>Or You can reach the Ordomed team directly:</p><ul><li><b>Phone:</b> 76002 51252</li><li><b>Email:</b> customercare@ordomed.in</li></ul><p style="font-size:12.5px;color:var(--text-soft);">Ordomed never asks for payment outside its official website/app, or for "contest" or "lucky draw" payments. Report anything suspicious via the Chakshu portal or the numbers above.</p>`,
+    chips: [["Back to main menu","greeting"]]
+  },
+  human: {
+    answer: `<p>I'm here to help! You can reach Ordomed CustomerCare through the following option:<p>- Live Chat: Instant messaging support, always availabe<p>
+      <p>- Call Back: Share your issue deatils and Ordomed will call you back<p>
+      <p>Or You can reach the Ordomed team directly:</p><ul><li><b>Phone:</b> 76002 51252</li><li><b>Email:</b> customercare@ordomed.in</li></ul><p style="font-size:12.5px;color:var(--text-soft);">Ordomed never asks for payment outside its official website/app, or for "contest" or "lucky draw" payments. Report anything suspicious via the Chakshu portal or the numbers above.</p>`,
+    chips: [["Back to main menu","greeting"]]
+  },
+  fallback: {
+    answer: `<p>I don't have a confident answer for that one yet  I'm focused on Derma, CNS, orders, shipping and returns for Ordomed. You can rephrase, pick a topic below, or reach our team directly.</p>`,
+    chips: [["Derma & skincare","derma_menu"],["CNS & neurology","cns_menu"],["Orders & shipping","order_menu"],["CustomerCare","human"]]
+  }
+};
+
+// keyword routing for free-text input -> intent id
+const ROUTES = [
+  [/acne|pimple|breakout|blackhead|whitehead/i, "derma_acne_cause"],
+  [/benzoyl|tretinoin|acne.*product|product.*acne/i, "derma_acne_products"],
+  [/pigment|dark spot|dull skin|glow|brighten|vitamin c|niacinamide/i, "derma_pigmentation"],
+  [/aging|anti.?age|wrinkle|retinoid|fine line/i, "derma_aging"],
+  [/sunscreen|spf|sun damage|sun protection/i, "derma_sunscreen"],
+  [/routine|regimen|skincare steps|skin assessment/i, "derma_routine"],
+  [/tacrolimus|eczema/i, "derma_tacrolimus"],
+  [/mupirocin|impetigo|bacterial skin/i, "derma_mupirocin"],
+  [/luliconazole|fungal|ringworm|antifungal/i, "derma_luliconazole"],
+  [/infection cream|infection.*prescription/i, "derma_infection_rx"],
+  [/derma|skin(?!escrow)|cosmetic/i, "derma_menu"],
+
+  [/levetiracetam|orbilexa/i, "cns_leve"],
+  [/brivaracetam|brivibit/i, "cns_briva"],
+  [/miss(ed)? .*dose|forgot.*dose/i, "cns_missed_dose"],
+  [/change.*dose|stop.*medicine|adjust.*dose/i, "cns_dose_change"],
+  [/without.*prescription.*cns|cns.*without.*prescription/i, "cns_rx_required"],
+  [/cns|epilep|seizure|neuro/i, "cns_menu"],
+
+  [/place.*order|how.*order|buy.*medicine/i, "order_place"],
+  [/upload.*prescription|prescription.*upload|how.*prescription/i, "order_upload_rx"],
+  [/payment|upi|card|pay/i, "order_payment"],
+  [/how long.*deliver|delivery time|when.*arrive/i, "order_delivery_time"],
+  [/which cities|city|cities|pincode|deliver to/i, "order_cities"],
+  [/shipping cost|delivery charge|shipping charge/i, "order_shipping_cost"],
+  [/track/i, "order_tracking"],
+  [/genuine|trust|fake|authentic|real medicine/i, "order_genuine"],
+
+  [/return polic|can i return/i, "return_policy"],
+  [/refund/i, "return_refund_process"],
+  [/exception|non.?refundable|can'?t.*return/i, "return_exceptions"],
+  [/damage|broken|leak/i, "return_damaged"],
+  [/return|exchange/i, "return_menu"],
+
+  [/human|customercare|agent|pharmacist|call|phone|email|support|contact/i, "human"],
+  [/^hi$|^hello$|^hey$|start over|menu/i, "greeting"]
+];
+
+function routeFreeText(text){
+  const t = text.trim();
+  for (const [pattern, id] of ROUTES){
+    if (pattern.test(t)) return id;
+  }
+  return "fallback";
+}
+
+// ---------------- CHAT ENGINE ----------------
+const messagesEl = document.getElementById('messages');
+const liveChipsEl = document.getElementById('liveChips');
+const inputEl = document.getElementById('userInput');
+
+function scrollToBottom(){
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+function addUserMessage(text){
+  const row = document.createElement('div');
+  row.className = 'msg-row user';
+  row.innerHTML = `<div class="avatar user">You</div><div class="bubble"><p>${escapeHtml(text)}</p></div>`;
+  messagesEl.appendChild(row);
+  scrollToBottom();
+}
+
+function escapeHtml(s){
+  const d = document.createElement('div');
+  d.innerText = s;
+  return d.innerHTML;
+}
+
+function addBotTyping(){
+  const row = document.createElement('div');
+  row.className = 'msg-row bot';
+  row.id = 'typingRow';
+  row.innerHTML = `<div class="avatar bot">O</div><div class="bubble"><div class="typing"><span></span><span></span><span></span></div></div>`;
+  messagesEl.appendChild(row);
+  scrollToBottom();
+}
+
+function removeBotTyping(){
+  const t = document.getElementById('typingRow');
+  if (t) t.remove();
+}
+
+function addBotMessage(html){
+  const row = document.createElement('div');
+  row.className = 'msg-row bot';
+  row.innerHTML = `<div class="avatar bot">O</div><div class="bubble">${html}</div>`;
+  messagesEl.appendChild(row);
+  scrollToBottom();
+}
+
+function renderChips(pairs){
+  liveChipsEl.innerHTML = '';
+  pairs.forEach(([label, id]) => {
+    const btn = document.createElement('button');
+    btn.className = 'chip' + (id === 'human' ? ' contact' : (id.startsWith('cns') ? ' alt' : ''));
+    btn.textContent = label;
+    btn.onclick = () => goTo(id, label);
+    liveChipsEl.appendChild(btn);
+  });
+}
+
+function goTo(intentId, userLabel){
+  if (userLabel) addUserMessage(userLabel);
+  liveChipsEl.innerHTML = '';
+  addBotTyping();
+  setTimeout(() => {
+    removeBotTyping();
+    const node = KB[intentId] || KB.fallback;
+    addBotMessage(node.answer);
+    if (node.chips) renderChips(node.chips);
+  }, 480 + Math.random()*260);
+}
+
+function handleUserText(){
+  const text = inputEl.value.trim();
+  if (!text) return;
+  addUserMessage(text);
+  inputEl.value = '';
+  liveChipsEl.innerHTML = '';
+  addBotTyping();
+  const intentId = routeFreeText(text);
+  setTimeout(() => {
+    removeBotTyping();
+    const node = KB[intentId] || KB.fallback;
+    addBotMessage(node.answer);
+    if (node.chips) renderChips(node.chips);
+  }, 480 + Math.random()*260);
+}
+
+document.getElementById('sendBtn').addEventListener('click', handleUserText);
+inputEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleUserText(); });
+
+document.querySelectorAll('.topic-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.getAttribute('data-topic');
+    const label = btn.textContent.trim();
+    goTo(id, label);
+  });
+});
+
+const resetBtn = document.getElementById('resetBtn');
+const chatMenu = document.getElementById('chatMenu');
+
+function closeChatMenu(){
+  chatMenu.classList.remove('open');
+  resetBtn.setAttribute('aria-expanded', 'false');
+}
+
+resetBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const isOpen = chatMenu.classList.toggle('open');
+  resetBtn.setAttribute('aria-expanded', String(isOpen));
+});
+
+document.addEventListener('click', closeChatMenu);
+
+document.querySelectorAll('#chatMenu button').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const action = btn.getAttribute('data-action');
+    closeChatMenu();
+    if (action === 'end') {
+      window.location.href = 'https://ordomed.in/products';
+      return;
+    }
+    initChat();
+  });
+});
+
+function initChat(){
+  messagesEl.innerHTML = '';
+  liveChipsEl.innerHTML = '';
+  addBotMessage(KB.greeting.answer);
+  renderChips(KB.greeting.chips);
+}
+
+initChat();
+</script>
+</body>
+</html>
